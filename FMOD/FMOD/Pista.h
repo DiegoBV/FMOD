@@ -1,14 +1,15 @@
 #pragma once
+#include <string>
+
 namespace FMOD{
 	class System;
 	class Channel;
 	class Sound;
 }
-#include <string>
 class Pista
 {
 public:
-	Pista(FMOD::System* system, std::string fileName);
+	Pista(FMOD::System* system, std::string fileName, int mode);
 	~Pista();
 
 	void Play();
@@ -22,8 +23,11 @@ public:
 	void FMODFadeIn();
 	void FMODFadeOut();
 	void ChangePitch(float pitch);
+	void SetPosition(float posX = 0, float posY = 0, float posZ = 0);
+	void ChangePosition(float posX = 0, float posY = 0, float posZ = 0);
 
 private:
+	
 	FMOD::System* system;
 	FMOD::Sound* sound;
 	FMOD::Channel* channel = nullptr;

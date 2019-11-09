@@ -3,14 +3,15 @@
 #include <fmod_errors.h>
 #include <chrono>
 #include <thread>
+#include <iostream>
 
 using namespace FMOD;
 
-Pista::Pista(System* system, std::string fileName): system(system) {
+Pista::Pista(System* system, std::string fileName, int mode): system(system) {
 
 	FMOD_RESULT result = system->createSound(
 		fileName.c_str(), // path al archivo de sonido
-		FMOD_DEFAULT, // valores (por defecto en este caso: sin loop, 2D)
+		mode, // valores (por defecto en este caso: sin loop, 2D)
 		0, // informacion adicional (nada en este caso)
 		&sound); // h
 
@@ -109,4 +110,24 @@ void Pista::FMODFadeOut()
 void Pista::ChangePitch(float pitch)
 {
 	this->pitch = pitch;
+}
+
+void Pista::SetPosition(float posX, float posY, float posZ)
+{
+	FMOD_VECTOR pos = { posX, posY, posZ };
+	channel->set3DAttributes(&pos, &FMOD_VECTOR());
+}
+
+void Pista::ChangePosition(float posX, float posY, float posZ)
+{
+	FMOD_VECTOR pos, vel;
+	channel->get3DAttributes(&pos, &vel);
+	
+	pos.x += posX;
+	pos.y += posY;
+	pos.z += posZ;
+
+	channel->set3DAttributes(&pos, &FMOD_VECTOR());
+	channel->get3DAttributes(&pos, &vel);
+	std::cout << pos.x;
 }
