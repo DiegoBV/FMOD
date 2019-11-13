@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Hoja6b.cpp" />
     <ClCompile Include="Pista.cpp" />
     <ClCompile Include="Hoja5.cpp" />
     <ClCompile Include="Hoja6.cpp" />

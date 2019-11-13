@@ -109,7 +109,7 @@ void Pista::FMODFadeOut()
 
 void Pista::ChangePitch(float pitch)
 {
-	this->pitch = pitch;
+	channel->setPitch(pitch);
 }
 
 void Pista::SetPosition(float posX, float posY, float posZ)
@@ -130,4 +130,15 @@ void Pista::ChangePosition(float posX, float posY, float posZ)
 	channel->set3DAttributes(&pos, &FMOD_VECTOR());
 	channel->get3DAttributes(&pos, &vel);
 	std::cout << pos.x;
+}
+
+void Pista::setConeOrientation(float x, float y, float z)
+{
+	FMOD_VECTOR dir = { x, y, z }; // vector de direccion de los conos
+	channel->set3DConeOrientation(&dir);
+}
+
+void Pista::set3DConeAngles(float insideConeAngle, float outsideConeAngle, float outsideConeVolume)
+{
+	channel->set3DConeSettings(insideConeAngle, outsideConeAngle, outsideConeVolume);
 }

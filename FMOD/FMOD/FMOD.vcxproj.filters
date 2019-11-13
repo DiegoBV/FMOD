@@ -24,6 +24,9 @@
     <ClCompile Include="Hoja6.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Hoja6b.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pista.h">

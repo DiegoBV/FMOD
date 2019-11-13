@@ -25,6 +25,8 @@ public:
 	void ChangePitch(float pitch);
 	void SetPosition(float posX = 0, float posY = 0, float posZ = 0);
 	void ChangePosition(float posX = 0, float posY = 0, float posZ = 0);
+	void setConeOrientation(float x, float y, float z);
+	void set3DConeAngles(float insideConeAngle, float outsideConeAngle, float outsideConeVolume);
 
 private:
 	
